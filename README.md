@@ -28,36 +28,6 @@
   ```
 6. Откройте [http://localhost:5173](http://localhost:5173)
 
-# Ospab Panel
-
-Панель управления виртуальными машинами и гипервизорами (Proxmox, VMware, Hyper-V, KVM, Xen).
-
-## Стек
-- **Backend:** Go, Gorilla mux, MySQL, JWT, bcrypt, AES-GCM
-- **Frontend:** React, Vite, Tailwind CSS
-- **ORM:** Prisma (только миграции)
-
-## Быстрый старт
-1. Установите Go >= 1.20 и Node.js >= 18
-2. Скопируйте `.env.example` → `.env` и укажите:
-  - `DATABASE_URL="user:pass@tcp(localhost:3306)/dbname?parseTime=true"`
-  - `SERVER_SECRET_KEY="ваш_32_символьный_ключ"`
-3. Примените миграции:
-  ```bash
-  npx prisma migrate deploy
-  ```
-4. Установите зависимости и запустите фронтенд:
-  ```bash
-  cd web
-  npm install
-  npm run dev
-  ```
-5. Запустите бэкенд:
-  ```bash
-  go run ./cmd/server/main.go
-  ```
-6. Откройте [http://localhost:5173](http://localhost:5173)
-
 ## Основные возможности
 - Регистрация и вход (JWT)
 - Добавление/редактирование серверов гипервизоров
