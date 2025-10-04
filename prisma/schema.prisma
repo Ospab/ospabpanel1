@@ -1,0 +1,40 @@
+// Prisma schema for OSPAB Panel (Go backend will NOT directly use this unless via generated client)
+// This is illustrative; using Prisma fully would require a Node service or generating via prisma-client-go (community).
+// If you intend to keep pure Go, consider GORM/SQLC instead. Here we provide a schema for potential tooling.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  username      String   @unique @db.VarChar(64)
+  email         String   @unique @db.VarChar(128)
+  password_hash String   @db.VarChar(255)
+  password_salt String   @db.VarChar(64)
+  created_at    DateTime @default(now()) @db.Timestamp(6)
+  updated_at    DateTime @updatedAt @db.Timestamp(6)
+  servers       Server[]
+  @@map("users")
+}
+
+model Server {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(128)
+  host             String   @db.VarChar(255)
+  port             Int
+  type             String   @db.Char(3)
+  username_enc     String   @db.Text
+  password_enc     String   @db.Text
+  is_active        Boolean  @default(true)
+  created_at       DateTime @default(now()) @db.Timestamp(6)
+  updated_at       DateTime @updatedAt @db.Timestamp(6)
+  user_id          Int
+  user             User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  @@map("servers")
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OSPAB Panel / Login</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <strong>OSPAB Panel</strong>
+  </header>
+  <main class="narrow">
+    <h1 class="center">Вход</h1>
+    <form id="loginForm" class="card small-gap">
+      <label>Логин
+        <input name="username" autocomplete="username" required />
+      </label>
+      <label>Пароль
+        <input name="password" type="password" autocomplete="current-password" required />
+      </label>
+      <button type="submit">Войти</button>
+      <p id="loginMessage" class="message"></p>
+    </form>
+    <section class="info">
+      <p>Тестовый пользователь: <code>admin / admin</code></p>
+    </section>
+  </main>
+  <footer class="footer center">© 2025 OSPAB</footer>
+  <script src="./app.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => initLoginPage());
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+-- This migration was intentionally emptied after schema refactor (indexes removed).
+-- Previously attempted to add several indexes and rename a foreign key index which caused errors.
+-- Keeping it as a no-op so migration history stays linear.
+-- (If a full reset is acceptable, you can delete the whole migrations folder and re-run `npx prisma migrate dev`.)
